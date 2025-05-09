@@ -20,8 +20,7 @@ df = df.dropna(subset=['Date of Concern'])
 df['Month-Year'] = df['Date of Concern'].dt.to_period('M')
 
 # Group by 'Month-Year' and 'External /Internal Concern Type' and sum the 'Total (£)' column
-grouped_df = df.groupby(['Month-Year', 'External /Internal Concern Type'])['Total
-(£)'].sum().reset_index()
+grouped_df = df.groupby(['Month-Year', 'External /Internal Concern Type'])['Total (£)'].sum().reset_index()
 
 # Convert 'Month-Year' to datetime for plotting
 grouped_df['Month-Year'] = grouped_df['Month-Year'].dt.to_timestamp()
@@ -30,8 +29,7 @@ grouped_df['Month-Year'] = grouped_df['Month-Year'].dt.to_timestamp()
 st.title('Total Cost per Month by External/Internal Concern Type')
 
 # Line chart
-fig = px.line(grouped_df, x='Month-Year', y='Total
-(£)', color='External /Internal Concern Type',
+fig = px.line(grouped_df, x='Month-Year', y='Total (£)', color='External /Internal Concern Type',
               title='Total Cost per Month by External/Internal Concern Type')
 st.plotly_chart(fig)
 
